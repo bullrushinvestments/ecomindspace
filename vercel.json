@@ -1,0 +1,109 @@
+import type { BuildCommand, EnvironmentVariables, HeaderRule } from './types'; // Assuming custom types are defined in a separate file
+
+interface CacheControlStrategy {
+  matchPattern: string;
+  rules: Array<{
+    urlPathPattern?: string;
+    headers?: Record<string, string>;
+    immutableMaxAgeSeconds?: number;
+    browserCacheTtlSeconds?: number;
+    edgeCacheTtlSeconds?: number;
+  }>;
+}
+
+interface VercelSettings {
+  buildCommand: BuildCommand;
+  outputDirectory: string;
+  environmentVariables: EnvironmentVariables;
+  headers: Array<HeaderRule>;
+  cacheControlStrategies: Array<CacheControlStrategy>;
+}
+
+export const deployConfig: VercelSettings = {
+  buildCommand: 'next build',
+  outputDirectory: '.next',
+  environmentVariables: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    DATABASE_URL: process.env.DATABASE_URL
+  },
+  headers: [
+    {
+      source: '/(.*)',
+      headers: [
+        { key: 'Access-Control-Allow-Origin', value: '*' },
+        { key: 'Access-Control-Allow-Methods', value: 'GET,OPTIONS,PATCH,DELETE,POST,PUT' },
+        { key: 'Access-Control-Allow-Headers', value: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version' }
+      ]
+    }
+  ],
+  cacheControlStrategies: [
+    {
+      matchPattern: '**/*.svg',
+      rules: [
+        { urlPathPattern: '/logo.svg', immutableMaxAgeSeconds: 31536000 },
+        { browserCacheTtlSeconds: 86400, edgeCacheTtlSeconds: 604800 }
+      ]
+    },
+    {
+      matchPattern: '**/*.js',
+      rules: [
+        { urlPathPattern: '/_next/static/**', browserCacheTtlSeconds: 31536000, edgeCacheTtlSeconds: 604800 }
+      ]
+    }
+  ]
+};
+
+import type { BuildCommand, EnvironmentVariables, HeaderRule } from './types'; // Assuming custom types are defined in a separate file
+
+interface CacheControlStrategy {
+  matchPattern: string;
+  rules: Array<{
+    urlPathPattern?: string;
+    headers?: Record<string, string>;
+    immutableMaxAgeSeconds?: number;
+    browserCacheTtlSeconds?: number;
+    edgeCacheTtlSeconds?: number;
+  }>;
+}
+
+interface VercelSettings {
+  buildCommand: BuildCommand;
+  outputDirectory: string;
+  environmentVariables: EnvironmentVariables;
+  headers: Array<HeaderRule>;
+  cacheControlStrategies: Array<CacheControlStrategy>;
+}
+
+export const deployConfig: VercelSettings = {
+  buildCommand: 'next build',
+  outputDirectory: '.next',
+  environmentVariables: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    DATABASE_URL: process.env.DATABASE_URL
+  },
+  headers: [
+    {
+      source: '/(.*)',
+      headers: [
+        { key: 'Access-Control-Allow-Origin', value: '*' },
+        { key: 'Access-Control-Allow-Methods', value: 'GET,OPTIONS,PATCH,DELETE,POST,PUT' },
+        { key: 'Access-Control-Allow-Headers', value: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version' }
+      ]
+    }
+  ],
+  cacheControlStrategies: [
+    {
+      matchPattern: '**/*.svg',
+      rules: [
+        { urlPathPattern: '/logo.svg', immutableMaxAgeSeconds: 31536000 },
+        { browserCacheTtlSeconds: 86400, edgeCacheTtlSeconds: 604800 }
+      ]
+    },
+    {
+      matchPattern: '**/*.js',
+      rules: [
+        { urlPathPattern: '/_next/static/**', browserCacheTtlSeconds: 31536000, edgeCacheTtlSeconds: 604800 }
+      ]
+    }
+  ]
+};

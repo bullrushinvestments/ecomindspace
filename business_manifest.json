@@ -1,0 +1,37 @@
+{
+  "name": "EcoMindSpace",
+  "type": "saas",
+  "description": "EcoMindSpace is a unique SaaS platform that combines mental health support with sustainable practices, offering small businesses and eco-conscious professionals tools to improve their mental well-being while reducing environmental impact.",
+  "generated_at": "2025-12-08T04:49:07.040533",
+  "components": [
+    "spec",
+    "build",
+    "deploy",
+    "spec_requirements",
+    "spec_architecture",
+    "build_code",
+    "build_test"
+  ],
+  "files_written": [
+    "businesses\\production_test\\saas\\ecomindspace\\src\\components\\component.tsx",
+    "businesses\\production_test\\saas\\ecomindspace\\__tests__\\component.test.tsx",
+    "businesses\\production_test\\saas\\ecomindspace\\vercel.json",
+    "businesses\\production_test\\saas\\ecomindspace\\src\\components\\requirements.tsx",
+    "businesses\\production_test\\saas\\ecomindspace\\__tests__\\architecture.test.tsx",
+    "businesses\\production_test\\saas\\ecomindspace\\vercel.json",
+    "businesses\\production_test\\saas\\ecomindspace\\src\\components\\test.tsx",
+    "businesses\\production_test\\saas\\ecomindspace\\src\\app\\layout.tsx",
+    "businesses\\production_test\\saas\\ecomindspace\\src\\app\\globals.css",
+    "businesses\\production_test\\saas\\ecomindspace\\src\\app\\page.tsx"
+  ],
+  "tasks_completed": 7,
+  "tasks_failed": 0,
+  "ap2_estimated_cost": 45.2,
+  "ap2_estimated_tokens": 19500,
+  "ap2_generation_approval": null,
+  "infrastructure_approvals": {
+    "analytics": null,
+    "database": null,
+    "storage": null
+  }
+}
